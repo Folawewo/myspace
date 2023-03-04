@@ -43,3 +43,20 @@ exports.followUser = (req, res) => {
       }
     );
   };
+
+  exports.unfollowUser = (req, res) => {
+    User.findByIdAndUpdate(
+      req.params.id,
+      { $pull: { followers: req.body.userId } },
+      { new: true },
+      (err, user) => {
+        if (err) {
+          res.status(500).json({ error: err });
+        } else if (!user) {
+          res.status(404).json({ error: 'User not found' });
+        } else {
+          res.json(user);
+        }
+      }
+    );
+  };
