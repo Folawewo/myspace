@@ -14,3 +14,15 @@ exports.getUser = (req, res) => {
       }
     });
 };
+
+exports.createUser = (req, res) => {
+  const { username } = req.body;
+  const user = new User({ username });
+  user.save((err, user) => {
+    if (err) {
+      res.status(500).json({ error: err });
+    } else {
+      res.json(user);
+    }
+  });
+};
