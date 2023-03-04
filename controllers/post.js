@@ -23,3 +23,15 @@ exports.createPost = (req, res) => {
     }
   });
 };
+
+exports.getPostsByUser = (req, res) => {
+  Post.find({ user: req.params.id })
+    .populate('user', 'username')
+    .exec((err, posts) => {
+      if (err) {
+        res.status(500).json({ error: err });
+      } else {
+        res.json(posts);
+      }
+    });
+};
