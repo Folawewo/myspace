@@ -35,3 +35,23 @@ exports.getPostsByUser = (req, res) => {
       }
     });
 };
+
+exports.getPostsByFollowing = (req, res) => {
+  User.findById(req.params.id, (err, user) => {
+    if (err) {
+      res.status(500).json({ error: err });
+    } else if (!user) {
+      res.status(404).json({ error: 'User not found' });
+    } else {
+      Post.find({ user: { $in: user.following } })
+        .populate('user', 'username')
+        .exec((err, posts) => {
+          if (err) {
+            res.status(500).json({ error: err });
+          } else {
+            res.json(posts);
+          }
+        });
+    }
+  });
+};
