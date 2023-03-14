@@ -1,6 +1,6 @@
 # MySpace
 
-Welcome to the MySpace API! This API allows you to perform social media functionalities such as posting messages, following users, and viewing a user's timeline. The API is built with Express and MongoDB and can be used as a starter template for building your own social media platform.
+Welcome to MySpace API! This API allows you to perform social media functionalities such as posting messages, following users, and viewing a user's timeline. The API is built with Express and MongoDB and can be used as a starter template for building your own social media platform.
 
 ## Installation
 
@@ -102,23 +102,14 @@ MySpace API stores user and post data in a MongoDB database. The schema for the 
 
 ### User
 
-```json
-{
-  name: String,
-  email: String,
-  following: [ObjectID],
-  followers: [ObjectID]
-}
+```yaml
+{ name: String, email: String, following: [ObjectID], followers: [ObjectID] }
 ```
 
 ### Post
 
-```json
-{
-  user: ObjectID,
-  text: String,
-  createdAt: Date
-}
+```yaml
+{ user: ObjectID, text: String, createdAt: Date }
 ```
 
 ## Conclusion
