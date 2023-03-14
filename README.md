@@ -102,13 +102,13 @@ MySpace API stores user and post data in a MongoDB database. The schema for the 
 
 ### User
 
-```yaml
+```bson
 { name: String, email: String, following: [ObjectID], followers: [ObjectID] }
 ```
 
 ### Post
 
-```yaml
+```bson
 { user: ObjectID, text: String, createdAt: Date }
 ```
 
